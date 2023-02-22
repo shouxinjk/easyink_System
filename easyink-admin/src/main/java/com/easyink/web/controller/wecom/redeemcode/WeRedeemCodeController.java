@@ -16,6 +16,7 @@ import com.easyink.wecom.service.redeemcode.WeRedeemCodeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -34,12 +35,14 @@ import java.util.List;
 @RequestMapping("/wecom/redeemcode")
 public class WeRedeemCodeController extends BaseController {
 
-    private final WeRedeemCodeService weRedeemCodeService;
-
-    private final WeCustomerService weCustomerService;
+    @Autowired
+    private WeRedeemCodeService weRedeemCodeService;
 
     @Autowired
-    public WeRedeemCodeController(WeRedeemCodeService weRedeemCodeService, WeCustomerService weCustomerService) {
+    private WeCustomerService weCustomerService;
+
+    @Autowired
+    public WeRedeemCodeController(@Lazy WeRedeemCodeService weRedeemCodeService, WeCustomerService weCustomerService) {
         this.weRedeemCodeService = weRedeemCodeService;
         this.weCustomerService = weCustomerService;
     }

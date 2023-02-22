@@ -47,6 +47,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.redisson.api.RLock;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -74,15 +75,19 @@ import static com.easyink.common.utils.file.MimeTypeUtils.XLSX;
 @Service
 public class WeRedeemCodeServiceImpl extends ServiceImpl<WeRedeemCodeMapper, WeRedeemCode> implements WeRedeemCodeService {
 
-
-    private final WeCustomerService weCustomerService;
-    private final WeRedeemCodeMapper weRedeemCodeMapper;
-    private final WeRedeemCodeActivityService weRedeemCodeActivityService;
-    private final WeCorpAccountService corpAccountService;
-    private final WeMessagePushClient messagePushClient;
+    @Autowired
+    private WeCustomerService weCustomerService;
+    @Autowired
+    private WeRedeemCodeMapper weRedeemCodeMapper;
+    @Autowired
+    private WeRedeemCodeActivityService weRedeemCodeActivityService;
+    @Autowired
+    private WeCorpAccountService corpAccountService;
+    @Autowired
+    private WeMessagePushClient messagePushClient;
 
     @Autowired
-    public WeRedeemCodeServiceImpl(WeCustomerService weCustomerService, WeRedeemCodeMapper weRedeemCodeMapper, WeRedeemCodeActivityService weRedeemCodeActivityService, WeCorpAccountService corpAccountService, WeMessagePushClient messagePushClient) {
+    public WeRedeemCodeServiceImpl(WeCustomerService weCustomerService, WeRedeemCodeMapper weRedeemCodeMapper,@Lazy WeRedeemCodeActivityService weRedeemCodeActivityService, WeCorpAccountService corpAccountService, WeMessagePushClient messagePushClient) {
         this.weCustomerService = weCustomerService;
         this.weRedeemCodeMapper = weRedeemCodeMapper;
         this.weRedeemCodeActivityService = weRedeemCodeActivityService;

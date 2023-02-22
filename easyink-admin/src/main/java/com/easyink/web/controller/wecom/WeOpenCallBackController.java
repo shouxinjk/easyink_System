@@ -20,6 +20,8 @@ import me.chanjar.weixin.common.util.xml.XStreamInitializer;
 import me.chanjar.weixin.cp.bean.WxCpXmlMessage;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -38,7 +40,7 @@ public class WeOpenCallBackController {
     private final WechatOpenConfig wechatOpenConfig;
 
     @ApiOperation(value = "微信开放平台-第三方平台授权事件接收接口(授权事件通知、component_verify_ticket)")
-    @PostMapping(value = "/${wechatopen.platform3rdAccount.appId}/receive3rdPlatform")
+    @PostMapping(value = "/{wechatopen.platform3rdAccount.appId}/receive3rdPlatform")
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public String receive3rdPlatform(@RequestParam("timestamp") String timeStamp,
                                      @RequestParam("nonce") String nonce,
