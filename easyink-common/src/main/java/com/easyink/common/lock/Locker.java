@@ -58,7 +58,7 @@ public interface Locker {
      * @param unit
      * @return  返回锁
      */
-    boolean tryLock(String lockKey, long waitTime, long leaseTime, TimeUnit unit)
+    RLock tryLock(String lockKey, long waitTime, long leaseTime, TimeUnit unit)
             throws InterruptedException;
 
     /**
