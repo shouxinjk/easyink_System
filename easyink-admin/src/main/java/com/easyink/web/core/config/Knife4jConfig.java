@@ -42,7 +42,7 @@ public class Knife4jConfig {
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.OAS_30)
-                .host("http://localhost:8090/")
+                .host("http://localhost:9001/")
                 .apiInfo(apiInfo())
                 .groupName(ruoYiConfig.getVersion())
                 .select()

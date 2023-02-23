@@ -114,8 +114,8 @@ ruoyi:
 
 # 开发环境配置
 server:
-  # 服务器的HTTP端口，默认为8090
-  port: ${SERVER_PORT:8099}
+  # 服务器的HTTP端口，默认为9001
+  port: ${SERVER_PORT:9001}
   servlet:
     # 应用的访问路径
     context-path: /
